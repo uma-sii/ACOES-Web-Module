@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title><ui:insert name="title">ACOES - <h:outputText value="#{sessionControl.getUser()}"></h:outputText></ui:insert></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library="css" name="acoes.css"  />
+    </h:head>
+    <body>
+        <header id="main-header">
+            <img src="resources/images/acoes_logo.png" alt="ACOES"></img>
+        </header>
+        <nav id="main-menu">
+            <header>
+                Bienvenido <strong><h:outputText value="#{sessionControl.getUser()}"></h:outputText></strong>
+            </header>
+            <hr></hr>
+            <h3>Menú</h3>
+            <a href='my_information.xhtml'>Información personal</a>
+            <a href='sponsored_child.xhtml'>Apadrinamiento</a>
+            <a href='payments.xhtml'>Pagos</a>
+            <a href='example.xhtml'>Contacta con nosotros</a>
+            <h3>Administrador</h3>
+            <a href='example.xhtml'>Proyectos de ACOES</a>
+            <a href='sponsors_info.xhtml'>Información sobre patrocinadores</a>
+            <a href='example.xhtml'>Money dashboard</a>
+            <a href='example.xhtml'>Gestión de solicitudes de apadrinamiento</a>
+        </nav>
+        <section class="content"><ui:insert name="content"></ui:insert></section>
+    </body>
+</html>

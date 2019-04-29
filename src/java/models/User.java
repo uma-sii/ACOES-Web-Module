@@ -99,7 +99,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "acoes.models.User[ id=" + id + " ]";
+        return email;
     }
     
 }

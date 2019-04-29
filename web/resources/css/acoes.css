@@ -1,0 +1,104 @@
+/* 
+    Created on : 29-abr-2019, 14:19:45
+    Author     : Manuel
+*/
+
+/* Lines with DEBUG tag will be commented in the release version */
+
+html {
+    height: 100%;
+    font-family: sans-serif, Arial;
+}
+
+body {
+    height: 100%;   
+    overflow: hidden;  /*makes the body non-scrollable (we will add scrolling to the sidebar and main content containers)*/
+    margin: 0px;  /*removes default style*/
+    display: flex;  /*enables flex content for its children*/
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(240, 240, 240);
+}
+
+header {
+    /*border: 1px solid;*/ /*DEBUG*/
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+}
+
+#main-header{
+    position:fixed;
+    width: 100%;
+    height: 60px;
+    display: block;
+    background-color: rgb(30,30,30);
+    text-align: right;
+    margin-bottom: 10px;
+    z-index: 1;
+}
+
+#main-header > img{
+   height: 50px;
+   margin: 5px;
+}
+
+#main-menu{
+    margin-top: 60px;
+    background-color: #fff;
+    position: fixed;
+    display: block;
+    width: 300px;
+    border: 1px solid gray; /*DEBUG*/
+    padding: 5px;
+    z-index: 0;
+    flex-grow: 1;
+    height: 100%;
+}
+
+#main-menu > header{
+    padding: 5px;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-weight: lighter;
+}
+
+#main-menu > a{
+    width:100%;
+    display:block;
+    text-decoration: none;
+    padding: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: inherit;
+}
+
+#main-menu > a:hover {
+    background-color: rgb(240, 240, 240);
+}
+
+.content{
+    margin-top: 60px;
+    position: fixed;
+    width: 100%;
+    margin-left:310px;
+    padding: 0 20px;
+    border: 1px solid gray;
+    background-color: white;
+    height: 100%;
+    flex-grow: 1;  /*ensures that the container will take up the full height of the parent container*/
+    overflow-y: auto; 
+}
+
+input{
+    width: 100%;
+}
+
+td{
+    padding: 1px;
+}
