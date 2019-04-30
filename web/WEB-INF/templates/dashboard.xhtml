@@ -8,31 +8,54 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+      
     <h:head>
         <title><ui:insert name="title">ACOES - <h:outputText value="#{sessionControl.getUser()}"></h:outputText></ui:insert></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <h:outputStylesheet library="css" name="acoes.css"  />
+        <h:outputStylesheet library="css" name="temp.css"  />
     </h:head>
     <body>
         <header id="main-header">
             <img src="resources/images/acoes_logo.png" alt="ACOES"></img>
         </header>
-        <nav id="main-menu">
-            <header>
-                Bienvenido <strong><h:outputText value="#{sessionControl.getUser()}"></h:outputText></strong>
-            </header>
-            <hr></hr>
-            <h3>Menú</h3>
-            <a href='my_information.xhtml'>Información personal</a>
-            <a href='sponsored_child.xhtml'>Apadrinamiento</a>
-            <a href='payments.xhtml'>Pagos</a>
-            <a href='example.xhtml'>Contacta con nosotros</a>
-            <h3>Administrador</h3>
-            <a href='example.xhtml'>Proyectos de ACOES</a>
-            <a href='sponsors_info.xhtml'>Información sobre patrocinadores</a>
-            <a href='example.xhtml'>Money dashboard</a>
-            <a href='example.xhtml'>Gestión de solicitudes de apadrinamiento</a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+          <a class="navbar-brand" href="index.xhtml">ACOES</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="example.xhtml">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="example.xhtml">Collaborate</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="example.xhtml">Donate</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="example.xhtml">Contact us</a>
+                </li>
+            </ul>
+                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                  <button type="button" class="btn btn-primary">Sign in</button>
+                  <div class="btn-group toggle" role="group">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></button>
+                    <div class="dropdown-menu toggle" aria-labelledby="btnGroupDrop1" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: -110px; will-change: transform;">
+                      <a class="dropdown-item" href="login.xhtml">Login</a>
+                      <a class="dropdown-item" href="login.xhtml">Sign up</a>
+                    </div>
+                  </div>
+                </div>
+          </div>
         </nav>
         <section class="content"><ui:insert name="content"></ui:insert></section>
     </body>

@@ -47,6 +47,15 @@ public class Login_Controller {
         
         return ctrl.log();
     }
+    
+    public String register(){
+        User usr = new User(email,password);
+        users.add(usr);
+                
+        ctrl.setUser(usr);
+        
+        return ctrl.log();
+    }
 
     public void setEmail(String email) {
         this.email = email;

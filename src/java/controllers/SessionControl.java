@@ -43,7 +43,7 @@ public class SessionControl implements Serializable {
             ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error, incorrect user or password", "Error, incorrect user or password"));
             return "login.xhtml";
         } 
-        return "sponsored_child.xhtml";
+        return "index.xhtml";
     }
     
     public String logout(){

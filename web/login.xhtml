@@ -22,6 +22,7 @@
                 <h:outputText value="Password " />
                 <p:password id="nonFeedback" value="#{login_Controller.password}" />
                 <p:commandButton value="Login" action="#{login_Controller.authenticate()}" ajax="false"/>
+                <p:commandButton value="Sign up" action="#{login_Controller.register()}" ajax="false"/>
                                
             </h:panelGrid>
         </h:form>
