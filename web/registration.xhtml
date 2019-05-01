@@ -12,18 +12,16 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
     <h:head>
-        <title>Login</title>
+        <title>Registration</title>
     </h:head>
     <h:body>
         <h:form>
             <h:panelGrid columns="2" cellpadding="5">
                 <h:outputText value="Email: " />
-                <p:inputText id="em" value="#{login_Controller.email}"/>
+                <p:inputText value="#{register_Controller.email}"/>
                 <h:outputText value="Password " />
-                <p:password id="nonFeedback" value="#{login_Controller.password}" />
-                <p:commandButton value="Login" action="#{login_Controller.authenticate()}" ajax="false"/> 
-                <p:button value="Register" href="registration.xhtml"/>                              
-
+                <p:password id="nonFeedback" value="#{register_Controller.password}" />
+                <p:commandButton value="Register" action="#{register_Controller.register()}" ajax="false"/>                              
             </h:panelGrid>
         </h:form>
     </h:body>

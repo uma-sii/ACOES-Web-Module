@@ -9,6 +9,8 @@ import models.*;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
@@ -21,6 +23,8 @@ import javax.faces.context.FacesContext;
 public class SessionControl implements Serializable {
     
     private User user;
+    private static List<User> users = new ArrayList<>();
+
     
     public SessionControl(){
         
@@ -32,6 +36,18 @@ public class SessionControl implements Serializable {
     
     public User getUser(){
         return user;
+    }
+    
+    public void addUser(User u){
+        users.add(u);
+    }
+
+    public static List<User> getUsers() {
+        return users;
+    }
+
+    public static void setUsers(List<User> users) {
+        SessionControl.users = users;
     }
     
     public String log(){

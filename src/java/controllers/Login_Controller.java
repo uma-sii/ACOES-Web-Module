@@ -23,36 +23,27 @@ public class Login_Controller {
     
     private String email;
     private String password;
-    private List<User> users;
     
     @Inject
     private SessionControl ctrl;
     
     public Login_Controller(){
-        users = new ArrayList<User>();
-        users.add(new User("cris@gmail.com", "jeje"));
+        ctrl = new SessionControl();
+        ctrl.addUser(new User("cris@gmail.com", "jeje"));
+        ctrl.addUser(new User("pepe@gmail.com", "jiji"));
     }
     
     public String authenticate(){
         
         User temp = null;
         
-        for(User u: users){
+        for(User u: ctrl.getUsers()){
             if(u.getEmail().equals(email) && u.getPassword().equals(password)){
                 temp = u;
             }
         }
         
         ctrl.setUser(temp);
-        
-        return ctrl.log();
-    }
-    
-    public String register(){
-        User usr = new User(email,password);
-        users.add(usr);
-                
-        ctrl.setUser(usr);
         
         return ctrl.log();
     }
@@ -65,10 +56,6 @@ public class Login_Controller {
         this.password = password;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -77,7 +64,4 @@ public class Login_Controller {
         return password;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
 }

@@ -46,14 +46,55 @@ and open the template in the editor.
                 </li>
             </ul>
                 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                  <button type="button" class="btn btn-primary">Sign in</button>
-                  <div class="btn-group toggle" role="group">
-                    <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></button>
-                    <div class="dropdown-menu toggle" aria-labelledby="btnGroupDrop1" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: -110px; will-change: transform;">
-                      <a class="dropdown-item" href="login.xhtml">Login</a>
-                      <a class="dropdown-item" href="login.xhtml">Sign up</a>
-                    </div>
-                  </div>
+                    
+                    <c:choose>
+                        <c:when test="#{sessionControl.getUser().email == null}">
+                            
+                           <button type="button" class="btn btn-primary">Sign in</button>
+                           <div class="btn-group toggle" role="group">
+                             <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></button>
+                             <div class="dropdown-menu toggle" aria-labelledby="btnGroupDrop1" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: -120px; will-change: transform;">
+                               <a class="dropdown-item" href="login.xhtml">Login</a>
+                               <a class="dropdown-item" href="registration.xhtml">Sign up</a>
+                             </div>
+                           </div>                            
+                        </c:when>
+                        <c:when test="#{sessionControl.getUser().email == 'pepe@gmail.com'}">
+
+                            <button type="button" class="btn btn-primary">Welcome Pepe</button>
+                            <div class="btn-group toggle" role="group">
+                              <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></button>
+                              <div class="dropdown-menu toggle" aria-labelledby="btnGroupDrop1" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: -120px; will-change: transform;">
+                                <a class="dropdown-item" href="my_information.xhtml">My information</a>
+                                <a class="dropdown-item" href="payments.xhtml">Payments</a>                              
+                                <a class="dropdown-item" href="login.xhtml">Log out</a>
+                              </div>
+                            </div>                        
+                        </c:when>
+                        <c:when test="#{sessionControl.getUser().email != 'cris@gmail.com'}">
+                            <button type="button" class="btn btn-primary">Welcome User!</button>
+                            <div class="btn-group toggle" role="group">
+                              <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></button>
+                              <div class="dropdown-menu toggle" aria-labelledby="btnGroupDrop1" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: -120px; will-change: transform;">
+                                <a class="dropdown-item" href="my_information.xhtml">My information</a>
+                                <a class="dropdown-item" href="payments.xhtml">Payments</a>                              
+                                <a class="dropdown-item" href="login.xhtml">Log out</a>
+                              </div>
+                            </div>             
+                        </c:when>
+                        <c:when test="#{sessionControl.getUser().email == 'cris@gmail.com'}">
+
+                           <button type="button" class="btn btn-primary">Welcome Cris</button>
+                           <div class="btn-group toggle" role="group">
+                             <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></button>
+                             <div class="dropdown-menu toggle" aria-labelledby="btnGroupDrop1" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: -120px; will-change: transform;">
+                               <a class="dropdown-item" href="my_information.xhtml">My information</a>
+                               <a class="dropdown-item" href="sponsors_info.xhtml">Sponsor's information</a>
+                               <a class="dropdown-item" href="login.xhtml">Log out</a>
+                             </div>
+                           </div>                       
+                        </c:when>
+                    </c:choose>                  
                 </div>
           </div>
         </nav>
