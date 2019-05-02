@@ -11,16 +11,18 @@
     </ui:define>
 
     <ui:define name="content">
-        <h1>Información personal</h1>
+        <h3>My information</h3>
         <hr></hr>
-        <h:form>
-        Email: <h:inputText value="#{sessionControl.user.email}"/><br/>
+        <div style="margin:20px 0 25px 0;" class="w3-border w3-padding w3-padding-32">
+        <h:form class="needs-validation">
+            <label>Email:</label> <h:inputText class="form-control" value="#{sessionControl.user.email}" required="true"/><br/>
         <c:if test="#{sessionControl.usersServices.isAdmin(sessionControl.user)}">
-            Grupo: <h:inputText value="#{sessionControl.admin.group}"/><br/>
-            Lugar de trabajo: <h:inputText value="#{sessionControl.admin.workplace}"/><br/>
+            Group: <h:inputText class="form-control" value="#{sessionControl.admin.group}"/><br/>
+            Workplace: <h:inputText class="form-control" value="#{sessionControl.admin.workplace}"/><br/>
         </c:if>      
-        <h:commandButton value="Actualizar" action="#{sessionControl.refreshUser()}"></h:commandButton>
+        <h:commandButton class="btn btn-primary" value="Actualizar" action="#{sessionControl.refreshUser()}"></h:commandButton>
         </h:form>
+        </div>
         
     </ui:define>
 </ui:composition>

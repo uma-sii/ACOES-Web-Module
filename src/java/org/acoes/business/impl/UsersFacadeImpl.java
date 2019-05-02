@@ -56,7 +56,7 @@ public class UsersFacadeImpl implements UsersFacade {
 
     @Override
     public boolean isAdmin(User user) {
-        return ((Administrator)usersDAO.findUser(user.getEmail())) != null;
+        return usersDAO.findUser(user.getEmail()) instanceof Administrator;
     }
 
     @Override
