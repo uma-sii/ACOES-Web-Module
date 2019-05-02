@@ -10,9 +10,12 @@
     </ui:define>
 
     <ui:define name="content">
-        <!-- Dummy data -->
         <h1>Información personal</h1>
         <hr></hr>
-        Email: <h:outputText value="#{sessionControl.getUser().getEmail()}"/><br/>
+        <h:form>
+        Email: <h:inputText value="#{sessionControl.user.email}"/><br/>
+        <h:commandButton value="Actualizar" action="#{sessionControl.refreshUser()}"></h:commandButton>
+        </h:form>
+        
     </ui:define>
 </ui:composition>
