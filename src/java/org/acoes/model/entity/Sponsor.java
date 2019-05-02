@@ -17,9 +17,8 @@ import javax.persistence.OneToMany;
 public class Sponsor extends User {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id; // dni
+    
+    private String dni;
     
     private String address;
     private String city;
@@ -43,12 +42,12 @@ public class Sponsor extends User {
         super(username, password);
     }
     
-    public Long getDNI() {
-        return id;
+    public String getDNI() {
+        return dni;
     }
     
-    public void setDNI(Long id) {
-        this.id = id;
+    public void setDNI(String id) {
+        this.dni = id;
     }
     
     public String getFirstName() {

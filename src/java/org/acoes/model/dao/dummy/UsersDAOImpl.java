@@ -11,6 +11,9 @@ import java.util.List;
 import org.acoes.model.entity.Administrator;
 import org.acoes.model.entity.User;
 import org.acoes.model.dao.UsersDAO;
+import org.acoes.model.entity.Gender;
+import org.acoes.model.entity.Sponsor;
+import org.acoes.model.entity.SponsoredChild;
 
 /**
  * This singleton class contains dummy data about users.
@@ -35,6 +38,7 @@ public class UsersDAOImpl implements UsersDAO {
     }
     
     private void init(){
+        
         users = new LinkedList<>();
         
         Administrator admin1 = new Administrator("johndoe@acoes.org", "12345");
@@ -46,13 +50,42 @@ public class UsersDAOImpl implements UsersDAO {
         users.add(admin1);
         users.add(admin2);
         
-        users.add(new User("cris@gmail.com", "12345"));
-        users.add(new User("manuel@gmail.com", "12345"));
-        users.add(new User("miguel@gmail.com", "12345"));
-        users.add(new User("alex@gmail.com", "12345"));
-        users.add(new User("diego@gmail.com", "12345"));
-        users.add(new User("luis@gmail.com", "12345"));
+        Sponsor cris = new Sponsor("cris@gmail.com", "12345");
+        List<SponsoredChild> cris_children = new LinkedList<>();
+        cris_children.add(new SponsoredChild("Juan", "López", Gender.MALE, "C/ Olancho 12", "Talanga", "Honduras"));
+        cris_children.add(new SponsoredChild("Ana", "Acosta", Gender.FEMALE, "C/ Trujillo 7", "La Ceiba", "Honduras"));
+        cris.setSponsoredChildren(cris_children);
+        cris.setDNI("12345A");
+        cris.setFirstName("Cristian");
+        cris.setLastName("Cardas");
+        cris.setGender(Gender.MALE);
+        cris.setCity("Málaga");
+        cris.setCountry("España");
+        cris.setZipcode(12345);
+        cris.setPhoneNumber("650123456");
+        
+        Sponsor manuel = new Sponsor("manuel@gmail.com", "12345");
+        List<SponsoredChild> manuel_children = new LinkedList<>();
+        manuel_children.add(new SponsoredChild("Luis", "Lagos", Gender.MALE, "C/ Olancho 20", "Talanga", "Honduras"));
+        manuel_children.add(new SponsoredChild("Rosa", "Matute", Gender.FEMALE, "C/ Trujillo 2", "La Ceiba", "Honduras"));
+        manuel.setSponsoredChildren(manuel_children);
+        manuel.setDNI("54321C");
+        manuel.setFirstName("Manuel");
+        manuel.setLastName("López");
+        manuel.setGender(Gender.MALE);
+        manuel.setCity("Málaga");
+        manuel.setCountry("España");
+        manuel.setZipcode(12345);
+        manuel.setPhoneNumber("659876543");
+        
+        users.add(cris);
+        users.add(manuel);
+        users.add(new Sponsor("miguel@gmail.com", "12345"));
+        users.add(new Sponsor("alex@gmail.com", "12345"));
+        users.add(new Sponsor("diego@gmail.com", "12345"));
+        users.add(new Sponsor("luis@gmail.com", "12345"));
     }
+    
     
     @Override
     public User findUser(String email) {

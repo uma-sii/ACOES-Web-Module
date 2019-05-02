@@ -17,6 +17,7 @@ import org.acoes.business.UsersFacade;
 import org.acoes.business.impl.UsersFacadeImpl;
 import org.acoes.model.dao.dummy.UsersDAOImpl;
 import org.acoes.model.entity.Administrator;
+import org.acoes.model.entity.Sponsor;
 
 /**
  *
@@ -46,6 +47,10 @@ public class SessionControl implements Serializable {
     
     public Administrator getAdmin(){
         return (Administrator)user;
+    }
+    
+    public Sponsor getSponsor(){
+        return (Sponsor)user;
     }
     
     public UsersFacade getUsersServices(){

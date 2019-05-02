@@ -11,6 +11,7 @@ public interface UsersFacade {
     public boolean doesUserExist(User user);
     public User    findUser(String email);
     public boolean isAdmin(User user);
+    public boolean isSponsor(User user);
     /**
      * Finds an user with the email and password given.
      * @param email

@@ -8,10 +8,12 @@ package org.acoes.business.impl;
 import org.acoes.business.UsersFacade;
 import org.acoes.model.dao.UsersDAO;
 import org.acoes.model.entity.Administrator;
+import org.acoes.model.entity.Sponsor;
 import org.acoes.model.entity.User;
+import org.acoes.model.exceptions.UserAlreadyExistsException;
 
 /**
- *
+ * Implementation of the service UserFacade
  * @author Manuel
  */
 public class UsersFacadeImpl implements UsersFacade {
@@ -40,7 +42,7 @@ public class UsersFacadeImpl implements UsersFacade {
     @Override
     public void createUser(User user) {
         if(doesUserExist(user))
-            throw new RuntimeException("User '" + user.getEmail() + "' already exists!"); //TODO: Custom exceptions
+            throw new UserAlreadyExistsException(user.getEmail());
         usersDAO.saveUser(user);
     }
 
@@ -70,6 +72,11 @@ public class UsersFacadeImpl implements UsersFacade {
     @Override
     public void refreshUser(User user) {
         usersDAO.saveUser(user);
+    }
+
+    @Override
+    public boolean isSponsor(User user) {
+        return usersDAO.findUser(user.getEmail()) instanceof Sponsor;
     }
     
 }
