@@ -7,20 +7,23 @@
     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <ui:define name="title">
-        ACOES - Información personal
+        ACOES - My information
     </ui:define>
 
     <ui:define name="content">
         <h3>My information</h3>
         <hr></hr>
-        <div style="margin:20px 0 25px 0;" class="w3-border w3-padding w3-padding-32">
+        <div style="margin:20px 20px 25px 20px;" class="w3-border w3-padding w3-padding-32">
         <h:form class="needs-validation">
             <label>Email:</label> <h:inputText class="form-control" value="#{sessionControl.user.email}" required="true"/><br/>
         <c:if test="#{sessionControl.usersServices.isAdmin(sessionControl.user)}">
-            Group: <h:inputText class="form-control" value="#{sessionControl.admin.group}"/><br/>
-            Workplace: <h:inputText class="form-control" value="#{sessionControl.admin.workplace}"/><br/>
+            <fieldset>
+                <legend>Administrator information</legend>
+                Group: <h:inputText class="form-control" value="#{sessionControl.admin.group}"/><br/>
+                Workplace: <h:inputText class="form-control" value="#{sessionControl.admin.workplace}"/><br/>
+            </fieldset>
         </c:if>      
-        <h:commandButton class="btn btn-primary" value="Actualizar" action="#{sessionControl.refreshUser()}"></h:commandButton>
+        <h:commandButton class="btn btn-primary" value="Save changes" action="#{sessionControl.refreshUser()}"></h:commandButton>
         </h:form>
         </div>
         

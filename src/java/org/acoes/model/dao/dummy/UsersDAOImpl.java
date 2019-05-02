@@ -47,7 +47,7 @@ public class UsersDAOImpl implements UsersDAO {
         users.add(admin2);
         
         users.add(new User("cris@gmail.com", "12345"));
-        users.add(new User("malorev@gmail.com", "12345"));
+        users.add(new User("manuel@gmail.com", "12345"));
         users.add(new User("miguel@gmail.com", "12345"));
         users.add(new User("alex@gmail.com", "12345"));
         users.add(new User("diego@gmail.com", "12345"));

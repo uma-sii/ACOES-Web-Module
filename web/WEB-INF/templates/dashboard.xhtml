@@ -48,18 +48,20 @@ and open the template in the editor.
                 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                     
                     <c:choose>
-                        <c:when test="#{sessionControl.getUser().email != null}">
+                        <c:when test="#{sessionControl.user.email != null}">
                             <button type="button" class="btn btn-primary">Welcome <h:outputText value="#{sessionControl.user.email}"></h:outputText></button>
                             <div class="btn-group toggle" role="group">
                               <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></button>
                               <div class="dropdown-menu toggle" aria-labelledby="btnGroupDrop1" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: -180px; will-change: transform;">
                                 <a class="dropdown-item" href="my_information.xhtml">My information</a>
-                                <c:when test="#{sessionControl.usersServices().isAdmin(user)}">
-                                    <a class="dropdown-item" href="sponsors_info.xhtml">Sponsor's information</a>
-                                </c:when>
-                                <c:otherwise>
-                                    <a class="dropdown-item" href="payments.xhtml">Payments</a>
-                                </c:otherwise>                         
+                                <c:choose>
+                                    <c:when test="#{sessionControl.usersServices.isAdmin(sessionControl.user)}">
+                                        <a class="dropdown-item" href="sponsors_info.xhtml">Sponsor's information</a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a class="dropdown-item" href="payments.xhtml">Payments</a>
+                                    </c:otherwise>
+                                </c:choose>
                                 <a class="dropdown-item" href="login.xhtml">Log out</a>
                               </div>
                             </div>                        
@@ -78,6 +80,6 @@ and open the template in the editor.
                 </div>
           </div>
         </nav>
-        <section class="content"><ui:insert name="content"></ui:insert></section>
+        <section style="padding: 10px" class="content"><ui:insert name="content"></ui:insert></section>
     </body>
 </html>
