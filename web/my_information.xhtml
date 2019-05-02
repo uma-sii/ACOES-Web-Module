@@ -3,16 +3,29 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:f="http://xmlns.jcp.org/jsf/core"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <ui:define name="title">
-        ACOES - Información personal
+        ACOES - My information
     </ui:define>
 
     <ui:define name="content">
-        <!-- Dummy data -->
-        <h1>Información personal</h1>
+        <h3>My information</h3>
         <hr></hr>
-        Email: <h:outputText value="#{sessionControl.getUser().getEmail()}"/><br/>
+        <div style="margin:20px 20px 25px 20px;" class="w3-border w3-padding w3-padding-32">
+        <h:form class="needs-validation">
+            <label>Email:</label> <h:inputText class="form-control" value="#{sessionControl.user.email}" required="true"/><br/>
+        <c:if test="#{sessionControl.usersServices.isAdmin(sessionControl.user)}">
+            <fieldset>
+                <legend>Administrator information</legend>
+                Group: <h:inputText class="form-control" value="#{sessionControl.admin.group}"/><br/>
+                Workplace: <h:inputText class="form-control" value="#{sessionControl.admin.workplace}"/><br/>
+            </fieldset>
+        </c:if>      
+        <h:commandButton class="btn btn-primary" value="Save changes" action="#{sessionControl.refreshUser()}"></h:commandButton>
+        </h:form>
+        </div>
+        
     </ui:define>
 </ui:composition>
