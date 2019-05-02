@@ -38,6 +38,8 @@ public class Sponsor extends User {
     @OneToMany
     private List<Payment> payments;
 
+    public Sponsor(){super();}
+    
     public Sponsor(String username, String password) {
         super(username, password);
     }

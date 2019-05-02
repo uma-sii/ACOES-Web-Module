@@ -33,6 +33,8 @@ public class SponsoredChild implements Serializable {
     private String city;
     private String country;
 
+    public SponsoredChild(){}
+    
     public SponsoredChild(String firstName, String lastName, Gender gender, String address, String city, String country) {
         this.firstName = firstName;
         this.lastName = lastName;

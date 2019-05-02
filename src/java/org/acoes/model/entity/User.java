@@ -31,6 +31,8 @@ public class User implements Serializable {
     protected String password; // todo: <- hash of salt + password
     //protected String salt;
     
+    public User(){}
+    
     public User(String username, String password){
         this.email = username;
         this.password = password;

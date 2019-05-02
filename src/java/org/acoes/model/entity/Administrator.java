@@ -22,6 +22,8 @@ public class Administrator extends User {
     private String workplace;
     private String group;
 
+    public Administrator(){super();}
+    
     public Administrator(String username, String password) {
         super(username, password);
     }

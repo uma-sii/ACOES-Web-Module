@@ -2,15 +2,18 @@ package org.acoes;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 
 /**
  *
  * @author Manuel
  */
 public class DummyDataGenerator {
+    @PersistenceContext
+private EntityManager em;
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ACOESPU");
-        EntityManager em = emf.createEntityManager();
+       // EntityManagerFactory emf = Persistence.createEntityManagerFactory("ACOESPU");
+        //EntityManager em = emf.createEntityManager();
         
         /*// Dummy data
         User[] users = new User[]{
@@ -24,7 +27,7 @@ public class DummyDataGenerator {
             em.persist(u);
         em.getTransaction().commit();
         */
-        em.close();
-        emf.close();
+        //em.close();
+        //emf.close();
     }
 }

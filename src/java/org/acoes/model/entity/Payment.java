@@ -26,6 +26,8 @@ public class Payment implements Serializable {
     private String paymentMethod;
     private String concept;
 
+    public Payment(){}
+    
     public Long getId() {
         return id;
     }
