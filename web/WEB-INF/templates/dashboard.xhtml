@@ -52,7 +52,7 @@ and open the template in the editor.
                             <button type="button" class="btn btn-primary">Welcome <h:outputText value="#{sessionControl.user.email}"></h:outputText></button>
                             <div class="btn-group toggle" role="group">
                               <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></button>
-                              <div class="dropdown-menu toggle" aria-labelledby="btnGroupDrop1" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: -120px; will-change: transform;">
+                              <div class="dropdown-menu toggle" aria-labelledby="btnGroupDrop1" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: -180px; will-change: transform;">
                                 <a class="dropdown-item" href="my_information.xhtml">My information</a>
                                 <c:when test="#{sessionControl.usersServices().isAdmin(user)}">
                                     <a class="dropdown-item" href="sponsors_info.xhtml">Sponsor's information</a>

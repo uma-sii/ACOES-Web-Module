@@ -16,6 +16,7 @@ import javax.faces.context.FacesContext;
 import org.acoes.business.UsersFacade;
 import org.acoes.business.impl.UsersFacadeImpl;
 import org.acoes.model.dao.dummy.UsersDAOImpl;
+import org.acoes.model.entity.Administrator;
 
 /**
  *
@@ -43,13 +44,17 @@ public class SessionControl implements Serializable {
         return user;
     }
     
+    public Administrator getAdmin(){
+        return (Administrator)user;
+    }
+    
     public UsersFacade getUsersServices(){
         return usersServices;
     }
     
     public String refreshUser(){
         usersServices.refreshUser(user);
-        return "";
+        return "index.xhtml";
     }
     
     public String log(){ 
