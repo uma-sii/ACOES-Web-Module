@@ -19,11 +19,14 @@ and open the template in the editor.
         <title><ui:insert name="title">ACOES - <h:outputText value="#{sessionControl.getUser()}"></h:outputText></ui:insert></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <h:outputStylesheet library="css" name="bootstrap.css"  />
+        <h:outputStylesheet library="css" name="bootstrap-formhelpers-countries.flags.css"  />
     </h:head>
+    <script src="assets/js/bootstrap-formhelpers-countries.en_US.js"></script>
+    <script src="assets/js/bootstrap-formhelpers-countries.js"></script>
     <body>
-        <header id="main-header">
+        <!--<header id="main-header">
             <img src="resources/images/acoes_logo.png" alt="ACOES"></img>
-        </header>
+        </header>-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
           <a class="navbar-brand" href="index.xhtml">ACOES</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +36,7 @@ and open the template in the editor.
           <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="example.xhtml">Projects</a>
+                    <a class="nav-link" href="projects.xhtml">Projects</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="example.xhtml">Collaborate</a>
@@ -79,6 +82,7 @@ and open the template in the editor.
                     </c:choose>                  
                 </div>
           </div>
+          <span class="bfh-countries" data-country="US" data-flags="true"></span>
         </nav>
         <section style="padding: 10px" class="content"><ui:insert name="content"></ui:insert></section>
     </body>

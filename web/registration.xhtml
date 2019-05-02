@@ -13,18 +13,39 @@
 
     <h:head>
         <title>Registration</title>
+        <h:outputStylesheet library="css" name="bootstrap.css"  />
     </h:head>
     <h:body>
         <h:form>
             <h:panelGrid columns="2" cellpadding="5">
-                <h:outputText value="Email: " />
-                <p:inputText value="#{register_Controller.email}"/>
-                <h:outputText value="Password " />
-                <p:password id="nonFeedback" value="#{register_Controller.password}" />
-                <p:commandButton value="Register" action="#{register_Controller.register()}" ajax="false"/>                              
+                Email
+                <p:inputText class="form-control" value="#{register_Controller.email}"/>
+                Contraseña
+                <h:inputSecret class="form-control" id="nonFeedback" value="#{register_Controller.password}" />
+                DNI
+                <h:inputText class="form-control" value="#{register_Controller.dni}"/>
+                First name
+                <h:inputText class="form-control" value="#{register_Controller.firstName}"/>
+                Last name
+                <h:inputText class="form-control" value="#{register_Controller.lastName}"/>
+                Gender
+                <h:selectOneMenu class="form-control" value="#{register_Controller.gender}">
+                    <f:selectItem itemValue="MALE" itemLabel="Male" />
+                    <f:selectItem itemValue="FEMALE" itemLabel="Female" />
+                </h:selectOneMenu>
+                Phone number
+                <h:inputText class="form-control" value="#{register_Controller.phoneNumber}"/>
+                Address
+                <h:inputText class="form-control" value="#{register_Controller.address}"/>
+                City
+                <h:inputText class="form-control" value="#{register_Controller.city}"/>
+                Country
+                <h:inputText class="form-control" value="#{register_Controller.country}"/>
+                ZIP Code
+                <h:inputText class="form-control" value="#{register_Controller.zipcode}"/>
+                <h:commandButton class="btn btn-primary" value="Register" action="#{register_Controller.register()}"/>                              
             </h:panelGrid>
         </h:form>
     </h:body>
-
 
 </html>
