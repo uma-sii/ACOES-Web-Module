@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="/WEB-INF/templates/dashboard.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:define name="title">
+        Sponsor Search
+    </ui:define>
+
+    <ui:define name="content">
+        <html>
+            
+               <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+               <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+               <style>
+                   table{
+                        font-family: arial, sans-serif;
+                        border-collapse: collapse;
+                        width: 81%;
+                    }
+                    * {
+                        box-sizing: border-box;
+                    }
+                    td, th {
+                        border: 1px solid #dddddd;
+                        text-align: left;
+                        padding: 8px;
+                    }
+                    tr:nth-child(even) {
+                        background-color: #dddddd;
+                    }
+                    form.example input[type=text] {
+                        padding: 7px;
+                        font-size: 17px;
+                        border: 1px solid grey;
+                        float: left;
+                        width: 50%;
+                        background: #f1f1f1;
+                    }
+                    form.example button {  
+                        float: left;
+                        width: 8%;
+                        padding: 7px;
+                        background: #2196F3;
+                        color: white;
+                        font-size: 17px;
+                        border: 1px solid grey;
+                        border-left: none;
+                        cursor: pointer;
+                    }
+                    form.example button:hover {
+                        background: #0b7dda;
+                    }
+               </style>
+            
+            <p></p>
+            <p></p>
+            <h3>Most Recent Sponsors</h3>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>E-mail</th>
+                    <th>Subscription</th>
+                </tr>
+                <tr>
+                    <td>Cris Cris</td>
+                    <td>ex@gmail.com</td>
+                    <td>Monthly</td>
+                </tr>
+                <tr>
+                    <td>Miguel Miguel</td>
+                    <td>ex2@gmail.com</td>
+                    <td>Year</td>
+                </tr>
+                <tr>
+                    <td>Manuel Manuel</td>
+                    <td>ex3@gmail.com</td>
+                    <td>Year</td>
+                </tr>
+                <tr>
+                    <td>Luis Luis</td>
+                    <td>ex3@gmail.com</td>
+                    <td>One Time</td>
+                </tr>
+                <tr>
+                    <td>Diego Diego</td>
+                    <td>ex4@gmail.com</td>
+                    <td>One Time</td>
+                </tr>
+                <tr>
+                    <td>Alex Alex</td>
+                    <td>example@gmail.com</td>
+                    <td>Monthly</td>
+                </tr>
+            </table>
+
+            <p></p>
+            <form class="example" action="/action_page.php">
+                <input type="text" placeholder="Search Sponsor.." name="search" />
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+
+        </html>
+    </ui:define>
+</ui:composition>
