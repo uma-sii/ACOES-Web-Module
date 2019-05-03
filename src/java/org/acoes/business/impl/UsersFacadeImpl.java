@@ -48,7 +48,12 @@ public class UsersFacadeImpl implements UsersFacade {
 
     @Override
     public boolean doesUserExist(User user) {
-        return usersDAO.findUser(user.getEmail()) != null;
+        return doesUserExist(user.getEmail());
+    }
+    
+    @Override
+    public boolean doesUserExist(String email) {
+        return usersDAO.findUser(email) != null;
     }
 
     @Override

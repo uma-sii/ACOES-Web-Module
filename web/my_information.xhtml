@@ -4,51 +4,67 @@
     xmlns:f="http://xmlns.jcp.org/jsf/core"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+    xmlns:cc="http://java.sun.com/jsp/jstl/core">
+    
     <ui:define name="title">
         ACOES - My information
     </ui:define>
 
     <ui:define name="content">
-        <h3>My information</h3>
-        <hr></hr>
-        <div style="margin:20px 20px 25px 20px;" class="w3-border w3-padding w3-padding-32">
-        <h:form class="needs-validation">
-            <label>Email:</label> <h:inputText class="form-control" value="#{sessionControl.user.email}" required="true"/><br/>
-            
-            <c:choose>
-                <c:when test="#{sessionControl.usersServices.isAdmin(sessionControl.user)}">
-                    <fieldset>
-                        <legend>Administrator information</legend>
-                        Group: <h:inputText class="form-control" value="#{sessionControl.admin.adminGroup}"/><br/>
-                        Workplace: <h:inputText class="form-control" value="#{sessionControl.admin.workplace}"/><br/>
-                    </fieldset>
-                </c:when>
-                <c:otherwise>
-                    <fieldset>
-                        <legend>Personal information</legend>
-                        DNI: <h:inputText readonly='true' class="form-control" value="#{sessionControl.sponsor.DNI}"/><br/>
-                        First name: <h:inputText class="form-control" value="#{sessionControl.sponsor.firstName}"/><br/>
-                        Last name: <h:inputText class="form-control" value="#{sessionControl.sponsor.lastName}"/><br/>
-                        Gender: <h:selectOneMenu class="form-control" value="#{sessionControl.sponsor.gender}">
-                                    <f:selectItem itemValue="MALE" itemLabel="Male" />
-                                    <f:selectItem itemValue="FEMALE" itemLabel="Female" />
-                                </h:selectOneMenu><br/>
-                        Phone number: <h:inputText class="form-control" value="#{sessionControl.sponsor.phoneNumber}"/><br/>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Place of residence</legend>
-                        Address: <h:inputText class="form-control" value="#{sessionControl.sponsor.address}"/><br/>
-                        City: <h:inputText class="form-control" value="#{sessionControl.sponsor.city}"/><br/>
-                        Country: <h:inputText class="form-control" value="#{sessionControl.sponsor.country}"/><br/>
-                        ZIP Code: <h:inputText class="form-control" value="#{sessionControl.sponsor.zipcode}"/><br/>
-                    </fieldset>
-                </c:otherwise>-->
-            </c:choose>
-        <h:commandButton class="btn btn-primary" value="Save changes" action="#{sessionControl.refreshUser()}"></h:commandButton>
-        </h:form>
-        </div>
+        <f:metadata>
+            <f:event type="preRenderView" listener="#{sessionControl.redirectIfNeeded()}" />
+        </f:metadata>
+        
+        <c:choose>
+            <c:when test="#{sessionControl.loggedIn()}">
+                <h3>My information</h3>
+                <hr></hr>
+                <div style="margin:20px 20px 25px 20px;" class="w3-border w3-padding w3-padding-32">
+                <h:form class="needs-validation">
+                    <label>Email:</label>
+                    <h:inputText id="email" class="form-control" value="#{sessionControl.user.email}">
+                        <f:validator validatorId="EmailValidator" />
+                    </h:inputText>
+                    <h:message for="email" style="color:red"></h:message>
+                    <br/>
+
+                    <c:choose>
+                        <c:when test="#{sessionControl.usersServices.isAdmin(sessionControl.user)}">
+                            <fieldset>
+                                <legend>Administrator information</legend>
+                                Group: <h:inputText class="form-control" value="#{sessionControl.admin.adminGroup}"/><br/>
+                                Workplace: <h:inputText class="form-control" value="#{sessionControl.admin.workplace}"/><br/>
+                            </fieldset>
+                        </c:when>
+                        <c:otherwise>
+                            <fieldset>
+                                <legend>Personal information</legend>
+                                DNI: <h:inputText readonly='true' class="form-control" value="#{sessionControl.sponsor.DNI}"/><br/>
+                                First name: <h:inputText class="form-control" value="#{sessionControl.sponsor.firstName}"/><br/>
+                                Last name: <h:inputText class="form-control" value="#{sessionControl.sponsor.lastName}"/><br/>
+                                Gender: <h:selectOneMenu class="form-control" value="#{sessionControl.sponsor.gender}">
+                                            <f:selectItem itemValue="MALE" itemLabel="Male" />
+                                            <f:selectItem itemValue="FEMALE" itemLabel="Female" />
+                                        </h:selectOneMenu><br/>
+                                Phone number: <h:inputText class="form-control" value="#{sessionControl.sponsor.phoneNumber}"/><br/>
+                            </fieldset>
+                            <fieldset>
+                                <legend>Place of residence</legend>
+                                Address: <h:inputText class="form-control" value="#{sessionControl.sponsor.address}"/><br/>
+                                City: <h:inputText class="form-control" value="#{sessionControl.sponsor.city}"/><br/>
+                                Country: <h:inputText class="form-control" value="#{sessionControl.sponsor.country}"/><br/>
+                                ZIP Code: <h:inputText class="form-control" value="#{sessionControl.sponsor.zipcode}"/><br/>
+                            </fieldset>
+                        </c:otherwise>-->
+                    </c:choose>
+                <h:commandButton class="btn btn-primary" value="Save changes" action="#{sessionControl.refreshUser()}"></h:commandButton>
+                </h:form>
+                </div>
+            </c:when>
+            <c:otherwise>
+            </c:otherwise>
+        </c:choose>
         
     </ui:define>
 </ui:composition>

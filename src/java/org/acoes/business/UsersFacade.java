@@ -9,6 +9,7 @@ import org.acoes.model.entity.User;
 public interface UsersFacade {
     public void    createUser(User user);
     public boolean doesUserExist(User user);
+    public boolean doesUserExist(String email);
     public User    findUser(String email);
     public boolean isAdmin(User user);
     public boolean isSponsor(User user);

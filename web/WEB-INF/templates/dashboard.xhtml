@@ -65,7 +65,9 @@ and open the template in the editor.
                                         <a class="dropdown-item" href="payments.xhtml">Payments</a>
                                     </c:otherwise>
                                 </c:choose>
-                                <a class="dropdown-item" href="login.xhtml">Log out</a>
+                                <h:form>
+                                    <h:commandLink class="dropdown-item" value="Log out" action="#{sessionControl.logout()}"></h:commandLink>
+                                </h:form>
                               </div>
                             </div>                        
                         </c:when>
@@ -82,7 +84,6 @@ and open the template in the editor.
                     </c:choose>                  
                 </div>
           </div>
-          <span class="bfh-countries" data-country="US" data-flags="true"></span>
         </nav>
         <section style="padding: 10px" class="content"><ui:insert name="content"></ui:insert></section>
     </body>

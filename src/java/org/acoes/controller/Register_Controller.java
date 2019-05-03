@@ -8,11 +8,15 @@ package org.acoes.controller;
 import org.acoes.model.entity.User;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.inject.Named;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
 import org.acoes.model.entity.Gender;
+import org.acoes.model.exceptions.UserAlreadyExistsException;
 
 
 /**
@@ -50,10 +54,19 @@ public class Register_Controller {
 
     public String register(){
         User usr = new User(email,password);
-        
-        ctrl.setUser(usr);
-        ctrl.getUsersServices().createUser(usr);
-        return "index.xhtml";
+        try{
+            ctrl.getUsersServices().createUser(usr);
+            ctrl.setUser(usr);
+            return "index.xhtml";
+        } catch(UserAlreadyExistsException e){
+            FacesContext ctx = FacesContext.getCurrentInstance();
+            FacesMessage message = new FacesMessage();
+            message.setSeverity(FacesMessage.SEVERITY_ERROR);
+            message.setSummary(e.getMessage());
+            message.setDetail(e.getMessage());
+            ctx.addMessage("signupForm:Email", message);
+            return "registration.xhtml";
+        }
     }
     
 

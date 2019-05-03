@@ -19,8 +19,8 @@
         <h:form>
             <h:panelGrid columns="2" cellpadding="5">
                 Email
-                <p:inputText class="form-control" value="#{register_Controller.email}"/>
-                Contraseña
+                <h:inputText class="form-control" value="#{register_Controller.email}" />
+                Password
                 <h:inputSecret class="form-control" id="nonFeedback" value="#{register_Controller.password}" />
                 DNI
                 <h:inputText class="form-control" value="#{register_Controller.dni}"/>
@@ -43,8 +43,9 @@
                 <h:inputText class="form-control" value="#{register_Controller.country}"/>
                 ZIP Code
                 <h:inputText class="form-control" value="#{register_Controller.zipcode}"/>
-                <h:commandButton class="btn btn-primary" value="Register" action="#{register_Controller.register()}"/>                              
+                <h:commandButton class="btn btn-primary" value="Register" action="#{register_Controller.register()}"/>
             </h:panelGrid>
+            <h:messages style="list-style-type: none; color:red"></h:messages>
         </h:form>
     </h:body>
 

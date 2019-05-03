@@ -73,9 +73,19 @@ public class SessionControl implements Serializable {
         return sponsorshipsServices;
     }
     
-    public String refreshUser(){
+    public void refreshUser(){
         usersServices.refreshUser(user);
-        return "index.xhtml";
+    }
+    
+    public boolean loggedIn(){
+        return user != null;
+    }
+    
+    public String redirectIfNeeded(){
+        System.out.println("Redirect if needed");
+        if(!loggedIn())
+            return "login.xhtml";
+        return null;
     }
     
     public String log(){ 
@@ -95,6 +105,6 @@ public class SessionControl implements Serializable {
         FacesContext ctx = FacesContext.getCurrentInstance();
         ctx.getExternalContext().invalidateSession();
         user = null;
-        return "login.xhtml";
+        return "index.xhtml";
     }
 }
