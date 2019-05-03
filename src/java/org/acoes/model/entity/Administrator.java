@@ -5,11 +5,7 @@
  */
 package org.acoes.model.entity;
 
-import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 /**
  * @author Manuel
@@ -20,7 +16,7 @@ public class Administrator extends User {
     private static final long serialVersionUID = 1L;
 
     private String workplace;
-    private String group;
+    private String adminGroup;
 
     public Administrator(){super();}
     
@@ -36,12 +32,12 @@ public class Administrator extends User {
         this.workplace = workplace;
     }
 
-    public String getGroup() {
-        return group;
+    public String getAdminGroup() {
+        return adminGroup;
     }
 
-    public void setGroup(String group) {
-        this.group = group;
+    public void setAdminGroup(String group) {
+        this.adminGroup = group;
     }
 
     @Override

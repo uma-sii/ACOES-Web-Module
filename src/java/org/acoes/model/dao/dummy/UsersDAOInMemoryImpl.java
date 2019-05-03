@@ -1,37 +1,50 @@
-package org.acoes;
+
+package org.acoes.model.dao.dummy;
+
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
 import org.acoes.model.entity.Administrator;
+import org.acoes.model.entity.User;
+import org.acoes.model.dao.UsersDAO;
 import org.acoes.model.entity.Gender;
 import org.acoes.model.entity.Sponsor;
 import org.acoes.model.entity.SponsoredChild;
 
 /**
- *
+ * This singleton class contains dummy data stored in memory about users.
  * @author Manuel
  */
-public class DummyDataGenerator {
-
-    public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ACOESPU");
-        EntityManager em = emf.createEntityManager();
-
-        em.getTransaction().begin();
+public class UsersDAOInMemoryImpl implements UsersDAO {
+    //Singleton
+    private static UsersDAOInMemoryImpl instance = null;
+    
+    // In-memory copy of data
+    private List<User> users;
+    
+    private UsersDAOInMemoryImpl(){
+        init();
+    }
+    
+    public static UsersDAOInMemoryImpl getInstance(){
+        if(instance == null){
+            instance = new UsersDAOInMemoryImpl();
+        }
+        return instance;
+    }
+    
+    private void init(){
+        
+        users = new LinkedList<>();
         
         Administrator admin1 = new Administrator("johndoe@acoes.org", "12345");
         admin1.setWorkplace("ACOES España");
-        admin1.setAdminGroup("");
         
         Administrator admin2 = new Administrator("janedoe@acoes.org", "12345");
-        admin2.setWorkplace("ACOES Honduras");
-        admin2.setAdminGroup("");
+        admin1.setWorkplace("ACOES Honduras");
         
-        em.persist(admin1);
-        em.persist(admin2);
+        users.add(admin1);
+        users.add(admin2);
         
         Sponsor cris = new Sponsor("cris@gmail.com", "12345");
         List<SponsoredChild> cris_children = new LinkedList<>();
@@ -61,16 +74,42 @@ public class DummyDataGenerator {
         manuel.setZipcode(12345);
         manuel.setPhoneNumber("659876543");
         
-        em.persist(cris);
-        em.persist(manuel);
-        em.persist(new Sponsor("miguel@gmail.com", "12345"));
-        em.persist(new Sponsor("alex@gmail.com", "12345"));
-        em.persist(new Sponsor("diego@gmail.com", "12345"));
-        em.persist(new Sponsor("luis@gmail.com", "12345"));
-        
-        em.getTransaction().commit();
-        
-        em.close();
-        emf.close();
+        users.add(cris);
+        users.add(manuel);
+        users.add(new Sponsor("miguel@gmail.com", "12345"));
+        users.add(new Sponsor("alex@gmail.com", "12345"));
+        users.add(new Sponsor("diego@gmail.com", "12345"));
+        users.add(new Sponsor("luis@gmail.com", "12345"));
     }
+    
+    
+    @Override
+    public User findUser(String email) {
+        User result = null;
+        for(User u : users){
+            if(u.getEmail().equals(email)){
+                result = u;
+                break;
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public void saveUser(User user) {
+        String email = user.getEmail();
+        int idx = 0;
+        boolean found = false;
+        User temp = null;
+        while(!found && idx < users.size()){
+            temp = users.get(idx);
+            if(temp.getEmail().equals(email)){
+                users.set(idx, user);
+                found = true;
+            }
+        }
+        if(!found)
+            users.add(user);
+    }
+    
 }

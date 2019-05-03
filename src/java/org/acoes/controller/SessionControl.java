@@ -10,16 +10,23 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import org.acoes.business.SponsorshipsFacade;
 import org.acoes.business.UsersFacade;
 import org.acoes.business.impl.SponsorshipsFacadeImpl;
 import org.acoes.business.impl.UsersFacadeImpl;
 import org.acoes.model.dao.dummy.UsersDAOImpl;
+import org.acoes.model.dao.dummy.UsersDAOInMemoryImpl;
 import org.acoes.model.entity.Administrator;
+import org.acoes.model.entity.Gender;
 import org.acoes.model.entity.Sponsor;
+import org.acoes.model.entity.SponsoredChild;
 
 /**
  *
@@ -37,9 +44,9 @@ public class SessionControl implements Serializable {
     public SessionControl(){
         usersServices = UsersFacadeImpl.getInstance();
         sponsorshipsServices = SponsorshipsFacadeImpl.getInstance();
-        // We are going to work with dummy data in-memory
-        usersServices.setUsersDAO(UsersDAOImpl.getInstance());
-        sponsorshipsServices.setUsersDAO(UsersDAOImpl.getInstance());
+
+        usersServices.setUsersDAO(UsersDAOInMemoryImpl.getInstance());
+        sponsorshipsServices.setUsersDAO(UsersDAOInMemoryImpl.getInstance());
     }
     
     public void setUser(User user){

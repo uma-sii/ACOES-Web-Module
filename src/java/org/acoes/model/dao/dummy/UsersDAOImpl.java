@@ -1,34 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.acoes.model.dao.dummy;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import org.acoes.model.entity.Administrator;
-import org.acoes.model.entity.User;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import org.acoes.model.dao.UsersDAO;
-import org.acoes.model.entity.Gender;
+import org.acoes.model.entity.Administrator;
 import org.acoes.model.entity.Sponsor;
-import org.acoes.model.entity.SponsoredChild;
+import org.acoes.model.entity.User;
 
 /**
- * This singleton class contains dummy data about users.
+ * This singleton class contains dummy data stored in the database about users.
  * @author Manuel
  */
+@Stateless
 public class UsersDAOImpl implements UsersDAO {
     //Singleton
     private static UsersDAOImpl instance = null;
+
+    @PersistenceContext(unitName = "ACOESPU")
+    private EntityManager em;
     
-    // In-memory copy of data
-    private List<User> users;
-    
-    private UsersDAOImpl(){
-        init();
-    }
+    private UsersDAOImpl(){ }
     
     public static UsersDAOImpl getInstance(){
         if(instance == null){
@@ -37,83 +29,25 @@ public class UsersDAOImpl implements UsersDAO {
         return instance;
     }
     
-    private void init(){
-        
-        users = new LinkedList<>();
-        
-        Administrator admin1 = new Administrator("johndoe@acoes.org", "12345");
-        admin1.setWorkplace("ACOES España");
-        
-        Administrator admin2 = new Administrator("janedoe@acoes.org", "12345");
-        admin1.setWorkplace("ACOES Honduras");
-        
-        users.add(admin1);
-        users.add(admin2);
-        
-        Sponsor cris = new Sponsor("cris@gmail.com", "12345");
-        List<SponsoredChild> cris_children = new LinkedList<>();
-        cris_children.add(new SponsoredChild("Juan", "López", Gender.MALE, "C/ Olancho 12", "Talanga", "Honduras"));
-        cris_children.add(new SponsoredChild("Ana", "Acosta", Gender.FEMALE, "C/ Trujillo 7", "La Ceiba", "Honduras"));
-        cris.setSponsoredChildren(cris_children);
-        cris.setDNI("12345A");
-        cris.setFirstName("Cristian");
-        cris.setLastName("Cardas");
-        cris.setGender(Gender.MALE);
-        cris.setCity("Málaga");
-        cris.setCountry("España");
-        cris.setZipcode(12345);
-        cris.setPhoneNumber("650123456");
-        
-        Sponsor manuel = new Sponsor("manuel@gmail.com", "12345");
-        List<SponsoredChild> manuel_children = new LinkedList<>();
-        manuel_children.add(new SponsoredChild("Luis", "Lagos", Gender.MALE, "C/ Olancho 20", "Talanga", "Honduras"));
-        manuel_children.add(new SponsoredChild("Rosa", "Matute", Gender.FEMALE, "C/ Trujillo 2", "La Ceiba", "Honduras"));
-        manuel.setSponsoredChildren(manuel_children);
-        manuel.setDNI("54321C");
-        manuel.setFirstName("Manuel");
-        manuel.setLastName("López");
-        manuel.setGender(Gender.MALE);
-        manuel.setCity("Málaga");
-        manuel.setCountry("España");
-        manuel.setZipcode(12345);
-        manuel.setPhoneNumber("659876543");
-        
-        users.add(cris);
-        users.add(manuel);
-        users.add(new Sponsor("miguel@gmail.com", "12345"));
-        users.add(new Sponsor("alex@gmail.com", "12345"));
-        users.add(new Sponsor("diego@gmail.com", "12345"));
-        users.add(new Sponsor("luis@gmail.com", "12345"));
-    }
-    
-    
     @Override
     public User findUser(String email) {
-        User result = null;
-        for(User u : users){
-            if(u.getEmail().equals(email)){
-                result = u;
-                break;
-            }
+        User result = em.find(Administrator.class, email);
+        System.out.println("Looking for user: " + result + " [admin]");
+        if(result == null){
+            result = em.find(Sponsor.class, email);
+            System.out.println("Looking for user: " + result + " [sponsor]");
         }
         return result;
     }
 
     @Override
     public void saveUser(User user) {
-        String email = user.getEmail();
-        int idx = 0;
-        boolean found = false;
-        User temp = null;
-        while(!found && idx < users.size()){
-            temp = users.get(idx);
-            if(temp.getEmail().equals(email)){
-                users.set(idx, user);
-                found = true;
-            }
+        User result = findUser(user.getEmail());
+        if(result == null){
+            em.persist(user);
+        } else{
+            em.merge(user);
         }
-        if(!found)
-            users.add(user);
     }
     
 }

@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import java.util.*;
+import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
 
 /**
@@ -32,10 +33,10 @@ public class Sponsor extends User {
     private String firstName;
     private String lastName;
     
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST)
     private List<SponsoredChild> sponsoredChildren;
     
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST)
     private List<Payment> payments;
 
     public Sponsor(){super();}
