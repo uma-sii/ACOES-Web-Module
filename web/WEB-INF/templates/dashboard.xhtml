@@ -45,7 +45,7 @@ and open the template in the editor.
                     <a class="nav-link" href="donate.xhtml">Donate</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="example.xhtml">Contact us</a>
+                    <a class="nav-link" href="contact_us.xhtml">Contact us</a>
                 </li>
             </ul>
                 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
@@ -60,6 +60,7 @@ and open the template in the editor.
                                 <c:choose>
                                     <c:when test="#{sessionControl.usersServices.isAdmin(sessionControl.user)}">
                                         <a class="dropdown-item" href="sponsors_info.xhtml">Sponsor's information</a>
+                                        <a class="dropdown-item" href="sponsor_grid_search.xhtml">Sponsor search</a>
                                     </c:when>
                                     <c:otherwise>
                                         <a class="dropdown-item" href="payments.xhtml">Payments</a>
