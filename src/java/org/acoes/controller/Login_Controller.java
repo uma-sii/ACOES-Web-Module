@@ -6,8 +6,6 @@
 package org.acoes.controller;
 
 import org.acoes.model.entity.User;
-import java.util.ArrayList;
-import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;

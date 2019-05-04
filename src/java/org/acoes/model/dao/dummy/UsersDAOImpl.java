@@ -20,7 +20,7 @@ public class UsersDAOImpl implements UsersDAO {
     @PersistenceContext(unitName = "ACOESPU")
     private EntityManager em;
     
-    private UsersDAOImpl(){ }
+    public UsersDAOImpl(){ }
     
     public static UsersDAOImpl getInstance(){
         if(instance == null){

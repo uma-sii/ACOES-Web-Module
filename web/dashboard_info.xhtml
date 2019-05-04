@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="/WEB-INF/templates/dashboard.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+
+    <ui:define name="title">
+        Dashboard
+    </ui:define>
+
+    <ui:define name="content">
+        <html>
+            
+               <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+               <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+               <style>
+                   table{
+                        font-family: arial, sans-serif;
+                        border-collapse: collapse;
+                        width: 81%;
+                    }
+                    * {
+                        box-sizing: border-box;
+                    }
+                    td, th {
+                        border: 1px solid #dddddd;
+                        text-align: left;
+                        padding: 8px;
+                    }
+                    tr:nth-child(even) {
+                        background-color: #dddddd;
+                    }
+                    form.example input[type=text] {
+                        padding: 7px;
+                        font-size: 17px;
+                        border: 1px solid grey;
+                        float: left;
+                        width: 50%;
+                        background: #f1f1f1;
+                    }
+                    form.example button {  
+                        float: left;
+                        width: 8%;
+                        padding: 7px;
+                        background: #2196F3;
+                        color: white;
+                        font-size: 17px;
+                        border: 1px solid grey;
+                        border-left: none;
+                        cursor: pointer;
+                    }
+                    form.example button:hover {
+                        background: #0b7dda;
+                    }
+               </style>
+            <h:outputScript>
+                <![CDATA[
+                    var table = document.getElementById('table').innerHTML;
+                    var sumVal = 0;
+                    var i = 1;
+                    for(i; i < table.rows.length; i++){
+                        if(table.rows[i].cells[0].innerHTML === 'Donation'){
+                            sumVal = sumVal + parseInt(table.rows[i].cells[1].innerHTML);                        
+                        }
+                    }
+                    document.getElementById("val").innerHTML = "Current budget = " + sumVal;
+                ]]>
+            </h:outputScript>
+            
+            <p></p>
+            <p></p>
+            <h3>Dashboard</h3>
+            <table id="table">
+                <tr>
+                    <th>Source</th>
+                    <th>Income($/quota)</th>
+                    <th>Benefactor</th>
+                </tr>
+                <tr>
+                    <td>Donation</td>
+                    <td>5</td>
+                    <td>cris@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>Donation</td>
+                    <td>25</td>
+                    <td>miguel@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>Sponsorship</td>
+                    <td>Year</td>
+                    <td>manuel@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>Sponsorship</td>
+                    <td>Monthly</td>
+                    <td>diego@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>Donation</td>
+                    <td>1</td>
+                    <td>luis@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>Donation</td>
+                    <td>50</td>
+                    <td>alex@gmail.com</td>
+                </tr>
+            </table>
+            <p></p>
+            <span id="val"></span>
+            
+            <p></p>
+            <form class="example" action="/action_page.php">
+                <input type="text" placeholder="Search transaction.." name="search" />
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+            
+        </html>
+    </ui:define>
+</ui:composition>
