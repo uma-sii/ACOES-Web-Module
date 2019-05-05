@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <ui:composition template="/WEB-INF/templates/dashboard.xhtml"
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:f="http://xmlns.jcp.org/jsf/core"
@@ -6,11 +8,35 @@
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <ui:define name="title">
-        New page title here
+        ACOES - Work with us
     </ui:define>
 
     <ui:define name="content">
-        <h1>New content here</h1>
-        <p>Blah blah</p>
+        <!-- Dummy data -->
+        <h2>Help ACOES make a better world</h2>
+        <p>Do you want to colaborate with ACOES? Fill in this form and we will contact you</p>
+        <table>
+        <form id="volunteer_application">
+            <fieldset>
+                    <tr><label>First name:</label></tr>
+                        <tr>
+                            <input type ="text" name="nombre"/>
+                        </tr>
+                   <tr><label>Last name:</label></tr>
+                        <tr>
+                    <input type ="text" name="apellidos"/>
+                        </tr>
+                   <tr><label>Email: </label></tr>
+                        <td>
+                    <input type ="text" name="email"/>
+                        </td>                   
+                   <tr>
+                       <input type="submit" value="Enviar"/>
+                   </tr>
+            </fieldset>
+        </form>
+        </table>
+        <textarea form="volunteer_application" name="message" rows="5" cols="90">Enter your message here...</textarea> 
+        <p>You can also help us economically  <a href="donate.xhtml">donating </a> or sponsoring a child. You must  <a href="registration.xhtml">register</a> before being a sponsor.</p>
     </ui:define>
 </ui:composition>

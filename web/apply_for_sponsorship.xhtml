@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/WEB-INF/templates/dashboard.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:define name="title">
+        ACOES - Apply for new sponsorship
+    </ui:define>
+
+    <ui:define name="content">
+<div class="checkout-panel">
+  <div class="panel-body">
+    <h2 class="title">Apply for new sponsorship</h2>
+ 
+    <div class="progress-bar">
+      <div class="step active"></div>
+      <div class="step active"></div>
+      <div class="step"></div>
+      <div class="step"></div>
+    </div>
+ 
+    <div class="payment-method">
+           <h3>Payment method</h3>
+      <label for="card" class="method card">
+        <div class="card-logos">
+          <img src="resources/img/visa_logo.png"/>
+          <img src="resources/img/mastercard_logo.png"/>
+        </div>
+ 
+        <div class="radio-input">
+          <input id="card" type="radio" name="payment"/>
+          Pay with credit card
+        </div>
+      </label>
+ 
+      <label for="paypal" class="method paypal">
+        <img src="resources/img/paypal_logo.png"/>
+        <div class="radio-input">
+          <input id="paypal" type="radio" name="payment"/>
+          Pay with PayPal
+        </div>
+      </label>
+    </div>
+ 
+    <div class="sponsor-amount">
+        <h3>Monthly amount</h3>
+        <label for="fee-one">
+            <div class="radio-amount-input">
+            <input id="fee-one" type="radio" name="payment-amount"/>
+            1€ fee
+            </div>
+        </label>
+        <label for="fee-two">
+            <div class="radio-amount-input">
+            <input id="fee-two" type="radio" name="payment-amount"/>
+            4,99€ 
+            </div>
+        </label>
+        <label for="fee-three">
+            <div class="radio-amount-input">
+            <input id="fee-three" type="radio" name="payment-amount"/>
+            9,99€ 
+            </div>
+        </label>    
+        <label for="fee-four">
+            <div class="radio-amount-input">
+            <input id="fee-four" type="radio" name="payment-amount"/>
+            29,99€ 
+            </div>
+        </label>
+        <label for="fee-five">
+            <div class="radio-amount-input">
+            <input id="fee-five" type="radio" name="payment-amount"/>
+            49,99€ 
+            </div>
+        </label>
+        <label for="fee-six">
+            <div class="radio-amount-input">
+            <input id="fee-six" type="radio" name="payment-amount"/>
+            99,99€ 
+            </div>
+        </label>
+    </div>
+    <div class="input-fields">
+           <h3>Payment info</h3>
+      <div class="column-1">
+        <label for="cardholder">Cardholder's Name</label>
+        <input type="text" id="cardholder" />
+ 
+        <div class="small-inputs">
+          <div>
+            <label for="date">Valid thru</label>
+            <input type="text" id="date" placeholder="MM / YY" />
+          </div>
+ 
+          <div>
+            <label for="verification">CVV / CVC *</label>
+            <input type="password" id="verification"/>
+          </div>
+        </div>
+ 
+      </div>
+      <div class="column-2">
+        <label for="cardnumber">Card Number</label>
+        <input type="password" id="cardnumber"/>
+ 
+        <span class="info">* CVV or CVC is the card security code, unique three digits number on the back of your card separate from its number.</span>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="panel-footer">
+      <button class="btn next-btn"><h6>Procceed</h6></button>
+  </div>
+</div>
+    </ui:define>
+</ui:composition>
