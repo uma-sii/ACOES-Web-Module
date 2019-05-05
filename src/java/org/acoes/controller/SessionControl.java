@@ -5,7 +5,7 @@
  */
 package org.acoes.controller;
 
-import org.acoes.model.entity.User;
+import org.acoes.model.entity.RegisteredUser;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -17,10 +17,13 @@ import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import org.acoes.business.PaymentsFacade;
 import org.acoes.business.SponsorshipsFacade;
 import org.acoes.business.UsersFacade;
+import org.acoes.business.impl.PaymentsFacadeImpl;
 import org.acoes.business.impl.SponsorshipsFacadeImpl;
 import org.acoes.business.impl.UsersFacadeImpl;
+import org.acoes.model.dao.dummy.PaymentsDAOInMemoryImpl;
 import org.acoes.model.dao.dummy.UsersDAOImpl;
 import org.acoes.model.dao.dummy.UsersDAOInMemoryImpl;
 import org.acoes.model.entity.Administrator;
@@ -36,24 +39,27 @@ import org.acoes.model.entity.SponsoredChild;
 @SessionScoped
 public class SessionControl implements Serializable {
     
-    private User user;
+    private RegisteredUser user;
 
     private UsersFacadeImpl usersServices;
     private SponsorshipsFacadeImpl sponsorshipsServices;
+    private PaymentsFacadeImpl paymentsServices;
     
     public SessionControl(){
         usersServices = UsersFacadeImpl.getInstance();
         sponsorshipsServices = SponsorshipsFacadeImpl.getInstance();
-
+        paymentsServices = PaymentsFacadeImpl.getInstance();
+        
         usersServices.setUsersDAO(UsersDAOInMemoryImpl.getInstance());
         sponsorshipsServices.setUsersDAO(UsersDAOInMemoryImpl.getInstance());
+        paymentsServices.setPaymentsDAO(PaymentsDAOInMemoryImpl.getInstance());
     }
     
-    public void setUser(User user){
+    public void setUser(RegisteredUser user){
         this.user = user;
     }
     
-    public User getUser(){
+    public RegisteredUser getUser(){
         return user;
     }
     
@@ -71,6 +77,10 @@ public class SessionControl implements Serializable {
     
     public SponsorshipsFacade getSponsorshipsServices(){
         return sponsorshipsServices;
+    }
+    
+    public PaymentsFacade getPaymentsServices(){
+        return paymentsServices;
     }
     
     public void refreshUser(){

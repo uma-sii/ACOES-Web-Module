@@ -9,7 +9,7 @@ import org.acoes.business.UsersFacade;
 import org.acoes.model.dao.UsersDAO;
 import org.acoes.model.entity.Administrator;
 import org.acoes.model.entity.Sponsor;
-import org.acoes.model.entity.User;
+import org.acoes.model.entity.RegisteredUser;
 import org.acoes.model.exceptions.UserAlreadyExistsException;
 
 /**
@@ -40,14 +40,14 @@ public class UsersFacadeImpl implements UsersFacade {
     }
     
     @Override
-    public void createUser(User user) {
+    public void createUser(RegisteredUser user) {
         if(doesUserExist(user))
             throw new UserAlreadyExistsException(user.getEmail());
         usersDAO.saveUser(user);
     }
 
     @Override
-    public boolean doesUserExist(User user) {
+    public boolean doesUserExist(RegisteredUser user) {
         return doesUserExist(user.getEmail());
     }
     
@@ -57,30 +57,30 @@ public class UsersFacadeImpl implements UsersFacade {
     }
 
     @Override
-    public User findUser(String email) {
+    public RegisteredUser findUser(String email) {
         return usersDAO.findUser(email);
     }
 
     @Override
-    public boolean isAdmin(User user) {
+    public boolean isAdmin(RegisteredUser user) {
         return usersDAO.findUser(user.getEmail()) instanceof Administrator;
     }
 
     @Override
-    public User match(String email, String password) {
-        User result = findUser(email);
+    public RegisteredUser match(String email, String password) {
+        RegisteredUser result = findUser(email);
         if(result != null && result.getPassword().equals(password))
             return result;
         return null;
     }
 
     @Override
-    public void refreshUser(User user) {
+    public void refreshUser(RegisteredUser user) {
         usersDAO.saveUser(user);
     }
 
     @Override
-    public boolean isSponsor(User user) {
+    public boolean isSponsor(RegisteredUser user) {
         return usersDAO.findUser(user.getEmail()) instanceof Sponsor;
     }
     

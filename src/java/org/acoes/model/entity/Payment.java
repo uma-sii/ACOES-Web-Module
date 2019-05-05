@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -15,18 +15,27 @@ import javax.persistence.TemporalType;
  */
 @Entity
 public class Payment implements Serializable {
-
     private static final long serialVersionUID = 1L;
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long id;
+    
     private int amount;
     @Temporal(TemporalType.TIMESTAMP)
     private Date paymentTimestamp;
     private String paymentMethod;
     private String concept;
+    @OneToOne
+    private RegisteredUser benefactor;
 
     public Payment(){}
+    
+    public Payment(RegisteredUser benefactor, int amount, String concept){
+        this.benefactor = benefactor;
+        this.amount = amount;
+        this.concept = concept;
+    }
     
     public Long getId() {
         return id;
@@ -34,6 +43,14 @@ public class Payment implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+    
+    public RegisteredUser getBenefactor() {
+        return benefactor;
+    }
+
+    public void setBenefactor(RegisteredUser benefactor) {
+        this.benefactor = benefactor;
     }
 
     public int getAmount() {
@@ -77,15 +94,11 @@ public class Payment implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Payment)) {
             return false;
         }
         Payment other = (Payment) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
 
     @Override

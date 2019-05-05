@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import org.acoes.model.entity.Administrator;
-import org.acoes.model.entity.User;
+import org.acoes.model.entity.RegisteredUser;
 import org.acoes.model.dao.UsersDAO;
 import org.acoes.model.entity.Gender;
 import org.acoes.model.entity.Sponsor;
@@ -20,7 +20,7 @@ public class UsersDAOInMemoryImpl implements UsersDAO {
     private static UsersDAOInMemoryImpl instance = null;
     
     // In-memory copy of data
-    private List<User> users;
+    private List<RegisteredUser> users;
     
     private UsersDAOInMemoryImpl(){
         init();
@@ -84,9 +84,9 @@ public class UsersDAOInMemoryImpl implements UsersDAO {
     
     
     @Override
-    public User findUser(String email) {
-        User result = null;
-        for(User u : users){
+    public RegisteredUser findUser(String email) {
+        RegisteredUser result = null;
+        for(RegisteredUser u : users){
             if(u.getEmail().equals(email)){
                 result = u;
                 break;
@@ -96,11 +96,11 @@ public class UsersDAOInMemoryImpl implements UsersDAO {
     }
 
     @Override
-    public void saveUser(User user) {
+    public void saveUser(RegisteredUser user) {
         String email = user.getEmail();
         int idx = 0;
         boolean found = false;
-        User temp = null;
+        RegisteredUser temp = null;
         while(!found && idx < users.size()){
             temp = users.get(idx);
             if(temp.getEmail().equals(email)){
@@ -110,6 +110,11 @@ public class UsersDAOInMemoryImpl implements UsersDAO {
         }
         if(!found)
             users.add(user);
+    }
+
+    @Override
+    public List<RegisteredUser> getUsers() {
+        return users;
     }
     
 }

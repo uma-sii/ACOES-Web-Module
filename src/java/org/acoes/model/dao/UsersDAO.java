@@ -5,16 +5,18 @@
  */
 package org.acoes.model.dao;
 
-import org.acoes.model.entity.User;
+import java.util.List;
+import org.acoes.model.entity.RegisteredUser;
 
 /**
  * @author Manuel
  */
 public interface UsersDAO {
-    public User findUser(String email);
+    public List<RegisteredUser> getUsers();
+    public RegisteredUser findUser(String email);
     /**
      * Adds a new user or updates an existing one.
      * @param user 
      */
-    public void saveUser(User user);
+    public void saveUser(RegisteredUser user);
 }

@@ -5,7 +5,7 @@
  */
 package org.acoes.controller;
 
-import org.acoes.model.entity.User;
+import org.acoes.model.entity.RegisteredUser;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -30,7 +30,7 @@ public class Login_Controller {
     }
     
     public String authenticate(){
-        User temp = ctrl.getUsersServices().match(email, password);
+        RegisteredUser temp = ctrl.getUsersServices().match(email, password);
         ctrl.setUser(temp);
         return ctrl.log();
     }

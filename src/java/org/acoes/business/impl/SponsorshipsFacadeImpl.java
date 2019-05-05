@@ -5,13 +5,13 @@ import org.acoes.business.SponsorshipsFacade;
 import org.acoes.model.dao.UsersDAO;
 import org.acoes.model.entity.Sponsor;
 import org.acoes.model.entity.SponsoredChild;
-import org.acoes.model.entity.User;
+import org.acoes.model.entity.RegisteredUser;
 
 /**
  * @author Manuel
  */
 public class SponsorshipsFacadeImpl implements SponsorshipsFacade {
-     //Singleton
+    //Singleton
     private static SponsorshipsFacadeImpl instance = null;
     
     private UsersDAO usersDAO;
@@ -34,13 +34,13 @@ public class SponsorshipsFacadeImpl implements SponsorshipsFacade {
     }
     
     @Override
-    public List<SponsoredChild> getSponsoredChildren(User user) {
+    public List<SponsoredChild> getSponsoredChildren(RegisteredUser user) {
         Sponsor sponsor = (Sponsor)usersDAO.findUser(user.getEmail());
         return sponsor.getSponsoredChildren();
     }
 
     @Override
-    public void applyForSponsorship(User user) {
+    public void applyForSponsorship(RegisteredUser user) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

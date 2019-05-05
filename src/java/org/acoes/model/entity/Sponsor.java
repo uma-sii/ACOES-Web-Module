@@ -1,24 +1,16 @@
 package org.acoes.model.entity;
 
-import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 import java.util.*;
 import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
 
 /**
- *
  * @author Manuel
  */
 @Entity
-public class Sponsor extends User {
-
-    private static final long serialVersionUID = 1L;
-    
+public class Sponsor extends RegisteredUser {
     private String dni;
     
     private String address;
@@ -134,28 +126,8 @@ public class Sponsor extends User {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Sponsor)) {
-            return false;
-        }
-        Sponsor other = (Sponsor) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
-        return "acoes.models.Sponsor[ id=" + id + " ]";
+        return "Sponsor(" + email + ")";
     }
     
 }

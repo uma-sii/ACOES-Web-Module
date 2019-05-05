@@ -5,7 +5,7 @@
  */
 package org.acoes.controller;
 
-import org.acoes.model.entity.User;
+import org.acoes.model.entity.RegisteredUser;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -53,7 +53,7 @@ public class Register_Controller {
     }
 
     public String register(){
-        User usr = new User(email,password);
+        RegisteredUser usr = new RegisteredUser(email,password);
         try{
             ctrl.getUsersServices().createUser(usr);
             ctrl.setUser(usr);

@@ -1,12 +1,13 @@
 package org.acoes.model.dao.dummy;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.acoes.model.dao.UsersDAO;
 import org.acoes.model.entity.Administrator;
 import org.acoes.model.entity.Sponsor;
-import org.acoes.model.entity.User;
+import org.acoes.model.entity.RegisteredUser;
 
 /**
  * This singleton class contains dummy data stored in the database about users.
@@ -30,8 +31,8 @@ public class UsersDAOImpl implements UsersDAO {
     }
     
     @Override
-    public User findUser(String email) {
-        User result = em.find(Administrator.class, email);
+    public RegisteredUser findUser(String email) {
+        RegisteredUser result = em.find(Administrator.class, email);
         System.out.println("Looking for user: " + result + " [admin]");
         if(result == null){
             result = em.find(Sponsor.class, email);
@@ -41,13 +42,18 @@ public class UsersDAOImpl implements UsersDAO {
     }
 
     @Override
-    public void saveUser(User user) {
-        User result = findUser(user.getEmail());
+    public void saveUser(RegisteredUser user) {
+        RegisteredUser result = findUser(user.getEmail());
         if(result == null){
             em.persist(user);
         } else{
             em.merge(user);
         }
+    }
+
+    @Override
+    public List<RegisteredUser> getUsers() {
+        return em.createQuery("SELECT u FROM RegisteredUser u").getResultList();
     }
     
 }
