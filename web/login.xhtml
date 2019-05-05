@@ -19,13 +19,13 @@
         <h:form>
             Email
             <h:inputText class="form-control" id="em" value="#{login_Controller.email}"/>
-                Password
-                <h:inputSecret class="form-control" id="nonFeedback" value="#{login_Controller.password}" />
-                <h:panelGrid columns="2" cellpadding="5">
-                <h:commandButton class="btn btn-primary" value="Login" action="#{login_Controller.authenticate()}"/> 
-                <h:commandButton class="btn btn-primary" value="Register" action="registration.xhtml"/>          
-                </h:panelGrid>
-        </h:form>
+            Password
+            <h:inputSecret class="form-control" id="nonFeedback" value="#{login_Controller.password}" />
+            <h:panelGrid columns="2" cellpadding="5">
+            <h:commandButton class="btn btn-primary" value="Login" action="#{login_Controller.authenticate()}"/> 
+            <h:commandButton class="btn btn-primary" value="Register" action="registration.xhtml"/>          
+            </h:panelGrid>
+    </h:form>
         </div>
     </h:body>
 
