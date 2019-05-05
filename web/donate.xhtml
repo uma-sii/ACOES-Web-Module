@@ -12,5 +12,15 @@
     <ui:define name="content">
         <h1>How can I help?</h1>
         <p>Thanks to your donations and help, more than 8.000 children have food on their table and access to education in a country where one out of three young people is analphabet, and doesn't have a proper nutrition.</p>
+        <form method="post">
+            <fieldset>
+                <legend>How much do you want to donate?</legend>
+                <label for="quantity">Quantity</label><br />
+                <input type="text" name="quantity" id="quantity" /><br />
+            </fieldset>
+            <p>
+                <input type="submit" name="action" value="Donate" />
+            </p>
+        </form>
     </ui:define>
 </ui:composition>

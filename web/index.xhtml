@@ -17,58 +17,22 @@
     </ui:define>
 
     <ui:define name="content">
-        <c:choose>
-            <c:when test="#{sessionControl.loggedIn()}">
-                <h3>Sponsorship information</h3>
-                    <hr></hr>
-                    <div style="margin:20px 20px 25px 20px;" class="w3-border w3-padding w3-padding-32">
-                        <c:if test="#{sessionControl.usersServices.isSponsor(sessionControl.user)}">
-                            <c:choose>
-                                <c:when test="#{sessionControl.sponsorshipsServices.getSponsoredChildren(sessionControl.user) != null}">
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>First name</th>
-                                                <th>Last name</th>
-                                                <th>Gender</th>
-                                                <th>City</th>
-                                                <th>Country</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <c:forEach var="child" items="#{sessionControl.sponsorshipsServices.getSponsoredChildren(sessionControl.user)}">
-                                                <tr>
-                                                    <td><h:outputText value="#{child.firstName}"/></td>
-                                                    <td><h:outputText value="#{child.lastName}"/></td>
-                                                    <td>
-                                                        <c:choose>
-                                                            <c:when test="#{child.gender == 'MALE'}">
-                                                                Male
-                                                            </c:when>
-                                                            <c:otherwise>
-                                                                Female
-                                                            </c:otherwise>
-                                                        </c:choose>
-                                                    </td>
-                                                    <td><h:outputText value="#{child.city}"/></td>
-                                                    <td><h:outputText value="#{child.country}"/></td>
-                                                </tr>
-                                            </c:forEach>
-                                        </tbody>
-                                    </table>  
-                                </c:when>
-                                <c:otherwise>
-                                    Go to <a href="collaborate.xhtml">Collaborate</a> menu for applying for your first sponsorship. 
-                                </c:otherwise>
-                            </c:choose>
-                        </c:if>
-                    </div>
-            </c:when>
-            <c:otherwise>
-                <h3>Home</h3>
-                <!-- home page here (you are not logged in!)-->
-            </c:otherwise>
-        </c:choose>
+        <h3>ACOES</h3>
+        <h4>ASOCIACIÓN COLABORACIÓN Y ESFUERZO</h4>
+        <h:panelGrid columns="2" border="1">
+            <h:outputText value="ACOES (Asociación Colaboración y Esfuerzo) is a non-governmental, non-profit organization incorporated in Tegucigalpa (Honduras). Through the educational projects it develops, it fosters solidarity and works for the education and integral development of the human being in the most underprivileged sectors of the population. ACOES HONDURAS was founded in 1993 by the priest Patricio Larrosa, a native of Huéneja (Granada), who, seeing the great need of the population, proposed to help together with a group of young Hondurans. At present there are more than 200 Honduran volunteers who support the development of the various projects, with the help of international cooperation and hundreds of volunteers from Spain, the United States, Canada, France,....."></h:outputText>
+            <h:graphicImage value="resources/img/classroom.PNG"></h:graphicImage>
+            <h:graphicImage value="/resources/img/oldman.PNG"></h:graphicImage>
+            <h:outputText value="In Spain, there are 24 Associations legalized to support ACOES HONDURAS (Hay ACOES Galicia, Canarias, Cataluña, Vigo, Granada Crea, Altiplano de Granada, Huéneja, Sevilla, Motril, Almuñecar, Vitoria, Valencia, Navarra, Madrid, Málaga Coperación Honduras, Badajoz, Catratxhos, Montaña de Plata, Amigos de Honduras Jaén, Cádiz, Almería, Zarautz, Banco de libros Tíjola, Cuenca and Pamplona). In Germany Globus Humanus E.V. In France and Canada there are volunteers who also collaborate with Honduras. It is important to point out that in ACOES no one receives a salary for their work. In 2015 the ANDALUSIAN FEDERATION OF ASSOCIATIONS COLLABORATION AND ACOES EFFORT is born and in 2016 the NATIONAL FEDERATION OF ACOES ASSOCIATIONS WITH HONDURAS is created."></h:outputText>
+        </h:panelGrid>
+        <h4>100% VOLUNTEERING</h4>
+        <h:panelGrid columns="2" border="1">
+            <h:outputText value="Volunteering is one of the main pillars that characterizes and distinguishes ACOES. We understand volunteer work as a form of solidarity towards the most disadvantaged population and as a sign of social responsibility towards social injustices. We are a team composed entirely of volunteers, both Spanish and Honduran, who seek a more just and dignified world for the Honduran population, working without any economic remuneration, with the same objective and with the same illusion."></h:outputText>
+            <h:graphicImage value="resources/img/volunteer1.PNG"></h:graphicImage>
+            <h:graphicImage value="resources/img/volunteer2.PNG"></h:graphicImage>
+            <h:outputText value="What was initially a small group of people has become an association with a committed and organized base of more than 200 volunteers and the collaboration of more than 1000 people, including volunteers, scholarship holders and collaborating partners. It is the young Honduran collaborators who act as the backbone of the organization to coordinate and manage the different projects directly from Honduras, while from Spain support is given to all activities in multiple ways such as grant management, recruitment of new scholars, awareness and much more."></h:outputText>
+        </h:panelGrid>
+
     </ui:define>
 </ui:composition>
 
