@@ -10,10 +10,76 @@
     </ui:define>
 
     <ui:define name="content">
-        <h3>My payments</h3>
-        <hr></hr>
-        <div style="margin:20px 20px 25px 20px;" class="w3-border w3-padding w3-padding-32">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <style>
+            table{
+                 font-family: arial, sans-serif;
+                 border-collapse: collapse;
+                 width: 81%;
+             }
+             * {
+                 box-sizing: border-box;
+             }
+             td, th {
+                 border: 1px solid #dddddd;
+                 text-align: left;
+                 padding: 8px;
+             }
+             tr:nth-child(even) {
+                 background-color: #dddddd;
+             }
+             form.example input[type=text] {
+                 padding: 7px;
+                 font-size: 17px;
+                 border: 1px solid grey;
+                 float: left;
+                 width: 50%;
+                 background: #f1f1f1;
+             }
+             form.example button {  
+                 float: left;
+                 width: 8%;
+                 padding: 7px;
+                 background: #2196F3;
+                 color: white;
+                 font-size: 17px;
+                 border: 1px solid grey;
+                 border-left: none;
+                 cursor: pointer;
+             }
+             form.example button:hover {
+                 background: #0b7dda;
+             }
+        </style>       
+
+        <h3>Dashboard</h3>
+            <table id="table">
+                <tr>
+                    <th>Concept</th>
+                    <th>Quantity ($)</th>
+                </tr>
+                <tr>
+                    <td>Sponsorship payment</td>
+                    <td>180</td>
+                </tr>
+                <tr>
+                    <td>Donation</td>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <td>Sponsorship</td>
+                    <td>Year</td>
+                </tr>
+            </table>
+            <p></p>
+            <span id="val"></span>
             
-        </div>
+            <p></p>
+            <form class="example" action="/action_page.php">
+                <input type="text" placeholder="Filter by concept.." name="search" />
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
     </ui:define>
 </ui:composition>
