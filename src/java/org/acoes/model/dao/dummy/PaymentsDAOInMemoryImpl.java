@@ -1,18 +1,13 @@
 
 package org.acoes.model.dao.dummy;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
-import org.acoes.model.entity.Administrator;
 import org.acoes.model.entity.RegisteredUser;
 import org.acoes.model.dao.PaymentsDAO;
-import org.acoes.model.entity.Gender;
 import org.acoes.model.entity.Payment;
-import org.acoes.model.entity.Sponsor;
-import org.acoes.model.entity.SponsoredChild;
 
 /**
  * This singleton class contains dummy data stored in memory about payments.
@@ -27,7 +22,7 @@ public class PaymentsDAOInMemoryImpl implements PaymentsDAO {
     
     private final static int ANNUAL_QUOTA = 100, MONTHLY_QUOTA = 50;
     
-    private String[] CONCEPTS = new String[]{ "Donation", "Sponsorship (Year quota)", "Sponsorship (Monthly quota)" };
+    private final String[] CONCEPTS = new String[]{ "Donation", "Sponsorship (Year quota)", "Sponsorship (Monthly quota)" };
     
     private PaymentsDAOInMemoryImpl(){
         init();

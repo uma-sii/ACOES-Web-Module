@@ -5,7 +5,6 @@ import org.acoes.model.entity.Payment;
 import org.acoes.model.entity.RegisteredUser;
 
 /**
- *
  * @author Manuel
  */
 public interface PaymentsDAO {

@@ -1,7 +1,6 @@
 package org.acoes.model.exceptions;
 
 /**
- *
  * @author Manuel
  */
 public class UserAlreadyExistsException extends RuntimeException {

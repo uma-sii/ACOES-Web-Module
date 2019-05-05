@@ -3,7 +3,6 @@ package org.acoes.business;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.function.Function;
 import org.acoes.model.dao.PaymentsDAO;
 import org.acoes.model.entity.Payment;
 import org.acoes.model.entity.RegisteredUser;
@@ -18,7 +17,7 @@ public interface PaymentsFacade {
     public Stats getStats();
     
     public class Stats{
-        private List<Payment> payments;
+        private final List<Payment> payments;
         
         public Stats(PaymentsDAO src){
             payments = src.getAllPayments();
@@ -26,15 +25,15 @@ public interface PaymentsFacade {
         
         public int totalAmount(){
             int sum = 0;
-            for(Payment p : payments)
-                sum += p.getAmount();
+            sum = payments.stream().map((p) -> p.getAmount()).reduce(sum, Integer::sum);
             return sum;
         }
         
         public int numberOfBenefactors(){
             Set<RegisteredUser> benefactors = new HashSet<>();
-            for(Payment p : payments)
+            payments.forEach((p) -> {
                 benefactors.add(p.getBenefactor());
+            });
             return benefactors.size();
         }
         

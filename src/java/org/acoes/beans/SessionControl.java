@@ -3,20 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.acoes.controller;
+package org.acoes.beans;
 
 import org.acoes.model.entity.RegisteredUser;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import org.acoes.business.PaymentsFacade;
 import org.acoes.business.SponsorshipsFacade;
 import org.acoes.business.UsersFacade;
@@ -24,12 +18,9 @@ import org.acoes.business.impl.PaymentsFacadeImpl;
 import org.acoes.business.impl.SponsorshipsFacadeImpl;
 import org.acoes.business.impl.UsersFacadeImpl;
 import org.acoes.model.dao.dummy.PaymentsDAOInMemoryImpl;
-import org.acoes.model.dao.dummy.UsersDAOImpl;
 import org.acoes.model.dao.dummy.UsersDAOInMemoryImpl;
 import org.acoes.model.entity.Administrator;
-import org.acoes.model.entity.Gender;
 import org.acoes.model.entity.Sponsor;
-import org.acoes.model.entity.SponsoredChild;
 
 /**
  *
@@ -41,9 +32,9 @@ public class SessionControl implements Serializable {
     
     private RegisteredUser user;
 
-    private UsersFacadeImpl usersServices;
-    private SponsorshipsFacadeImpl sponsorshipsServices;
-    private PaymentsFacadeImpl paymentsServices;
+    private final UsersFacadeImpl usersServices;
+    private final SponsorshipsFacadeImpl sponsorshipsServices;
+    private final PaymentsFacadeImpl paymentsServices;
     
     public SessionControl(){
         usersServices = UsersFacadeImpl.getInstance();
@@ -106,8 +97,6 @@ public class SessionControl implements Serializable {
             return "login.xhtml";
         }
         
-        if(user instanceof Administrator)
-            return "sponsors_info.xhtml";
         return "index.xhtml";
     }
     

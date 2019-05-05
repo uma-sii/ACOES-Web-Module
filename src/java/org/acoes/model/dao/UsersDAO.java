@@ -13,10 +13,10 @@ import org.acoes.model.entity.RegisteredUser;
  */
 public interface UsersDAO {
     public List<RegisteredUser> getUsers();
-    public RegisteredUser findUser(String email);
+    public RegisteredUser       findUser(String email);
     /**
      * Adds a new user or updates an existing one.
      * @param user 
      */
-    public void saveUser(RegisteredUser user);
+    public void                 saveUser(RegisteredUser user);
 }

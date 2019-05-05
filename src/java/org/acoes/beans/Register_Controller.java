@@ -3,17 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.acoes.controller;
+package org.acoes.beans;
 
 import org.acoes.model.entity.RegisteredUser;
-import java.util.ArrayList;
-import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.inject.Named;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
 import org.acoes.model.entity.Gender;
 import org.acoes.model.exceptions.UserAlreadyExistsException;

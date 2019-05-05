@@ -4,7 +4,6 @@ package org.acoes.business.impl;
 import java.util.List;
 import org.acoes.business.PaymentsFacade;
 import org.acoes.model.dao.PaymentsDAO;
-import org.acoes.model.dao.UsersDAO;
 import org.acoes.model.entity.Payment;
 
 /**

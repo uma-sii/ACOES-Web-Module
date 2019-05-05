@@ -20,7 +20,7 @@
                    table{
                         font-family: arial, sans-serif;
                         border-collapse: collapse;
-                        width: 81%;
+                        width: 100%;
                     }
                     * {
                         box-sizing: border-box;
@@ -56,20 +56,6 @@
                         background: #0b7dda;
                     }
                </style>
-            <script type="text/javascript">
-                <![CDATA[
-                    var table = document.getElementById('table').innerHTML;
-                    var sumVal = 0;
-                    var i = 1;
-                    for(i; i < table.rows.length; i++){
-                        if(table.rows[i].cells[0].innerHTML === 'Donation'){
-                            sumVal = sumVal + parseInt(table.rows[i].cells[1].innerHTML);                        
-                        }
-                    }
-                    document.getElementById("val").innerHTML = "Current budget = " + sumVal;
-                ]]>
-            </script>
-            
             <p></p>
             <p></p>
             <h3>Dashboard</h3>
@@ -89,54 +75,14 @@
                     <h:outputText value="#{entry.benefactor.email}"/>
                 </h:column>
             </h:dataTable>
-            
+            <p></p>
             <b>Total amount:</b> <h:outputText value=" $#{paymentsStats.totalAmount()}"></h:outputText><br/>
-            <b>Number of benefactors:</b> <h:outputText value="#{paymentsStats.numberOfBenefactors()}"></h:outputText>
-            <!--<table id="table">
-                <tr>
-                    <th>Source</th>
-                    <th>Income($/quota)</th>
-                    <th>Benefactor</th>
-                </tr>
-                <tr>
-                    <td>Donation</td>
-                    <td>5</td>
-                    <td>cris@gmail.com</td>
-                </tr>
-                <tr>
-                    <td>Donation</td>
-                    <td>25</td>
-                    <td>miguel@gmail.com</td>
-                </tr>
-                <tr>
-                    <td>Sponsorship</td>
-                    <td>Year</td>
-                    <td>manuel@gmail.com</td>
-                </tr>
-                <tr>
-                    <td>Sponsorship</td>
-                    <td>Monthly</td>
-                    <td>diego@gmail.com</td>
-                </tr>
-                <tr>
-                    <td>Donation</td>
-                    <td>1</td>
-                    <td>luis@gmail.com</td>
-                </tr>
-                <tr>
-                    <td>Donation</td>
-                    <td>50</td>
-                    <td>alex@gmail.com</td>
-                </tr>
-            </table>
-            <p></p>
-            <span id="val"></span>-->
+            <b>Number of benefactors:</b> <h:outputText value=" #{paymentsStats.numberOfBenefactors()}"></h:outputText>
             
-            <p></p>
-            <form class="example" action="/action_page.php">
-                <input type="text" placeholder="Search transaction.." name="search" />
+            <!--<h:form class="example">
+                <h:inputText class="search"></h:inputText>
                 <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
+            </h:form>-->
             
         </html>
     </ui:define>

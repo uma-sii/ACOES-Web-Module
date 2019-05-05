@@ -1,4 +1,4 @@
-package org.acoes.controller.validator;
+package org.acoes.beans.validator;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -13,6 +13,7 @@ import org.acoes.business.impl.UsersFacadeImpl;
  * @author Manuel
  */
 public class EmailValidator implements Validator{
+    @Override
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {	
 	String email = (String) value;
         
@@ -24,7 +25,7 @@ public class EmailValidator implements Validator{
             createFacesMessage(context, "Error: Email is not valid", "Email cannot be empty.");
         }
         
-	if(!email.contains("@") || email.startsWith("@") || email.charAt(email.length()) == '@') {
+	if(!email.contains("@") || email.startsWith("@") || email.charAt(email.length()-1) == '@') {
             createFacesMessage(context, "Error: Email is not valid", "Error: Email is not valid.");
         }
     }

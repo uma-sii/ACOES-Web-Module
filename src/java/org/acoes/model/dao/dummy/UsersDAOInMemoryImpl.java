@@ -1,7 +1,6 @@
 
 package org.acoes.model.dao.dummy;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import org.acoes.model.entity.Administrator;
@@ -100,10 +99,8 @@ public class UsersDAOInMemoryImpl implements UsersDAO {
         String email = user.getEmail();
         int idx = 0;
         boolean found = false;
-        RegisteredUser temp = null;
         while(!found && idx < users.size()){
-            temp = users.get(idx);
-            if(temp.getEmail().equals(email)){
+            if(users.get(idx).getEmail().equals(email)){
                 users.set(idx, user);
                 found = true;
             }
